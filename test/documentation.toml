@@ -1,0 +1,42 @@
+# Конфигурационный файл со списком доступной для чтения документации
+# (C) 2024 Михаил Краснов <michail383krasnov@mail.ru>
+
+[[categories]]
+id = "intro"
+name = "Введение"
+
+[[categories]]
+id = "systems"
+name = "Операционные системы"
+
+[[categories]]
+id = "package_managers"
+name = "Пакетные менеджеры"
+
+[[categories]]
+id = "quick_fixes"
+name = "Быстрое решение проблем"
+
+[[docs.systems]]
+id = "unix"
+name = "Многообразие Unix-систем"
+
+[[docs.systems]]
+id = "linux"
+name = "Зоопарк Linux-систем"
+
+[[docs.systems]]
+id = "adw-disadw"
+name = "Достоинства и недостатки Linux"
+
+[[docs.intro]]
+id = "about"
+name = "Что такое Linux?"
+
+[[docs.intro]]
+id = "free-software"
+name = "Свободное программное обеспечение"
+
+[[docs.intro]]
+id = "helper"
+name = "Пару слов про Helper"

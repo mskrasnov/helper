@@ -1,0 +1,30 @@
+[package]
+name = "helper"
+version = "0.1.0"
+edition = "2021"
+description = "Простая программа для получения интерактивной справки по использованию команд Linux"
+authors = ["Michail Krasnov <michail383krasnov@mail.ru>"]
+license = "GPL-3.0-or-later"
+homepage = "https://github.com/mskrasnov/helper"
+repository = "https://github.com/mskrasnov/helper"
+readme = "README.md"
+keywords = ["cursive", "linux", "unix", "man", "help", "info", "helper"]
+categories = ["command-line-utilities"]
+
+[profile.release]
+lto = true
+strip = true
+debug = false
+panic = "abort"
+opt-level = "z"
+
+[dependencies]
+anyhow = "1.0.90"
+cursive = "0.21.1"
+serde = { version = "1.0.210", features = ["derive"] }
+toml = "0.8.19"
+
+[features]
+default = ["local-files"]
+system-files = []
+local-files = []
