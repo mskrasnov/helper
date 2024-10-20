@@ -8,7 +8,7 @@ license = "GPL-3.0-or-later"
 homepage = "https://github.com/mskrasnov/helper"
 repository = "https://github.com/mskrasnov/helper"
 readme = "README.md"
-keywords = ["cursive", "linux", "unix", "man", "help", "info", "helper"]
+keywords = ["cursive", "linux", "unix", "man", "help"]
 categories = ["command-line-utilities"]
 
 [profile.release]
