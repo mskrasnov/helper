@@ -4,6 +4,7 @@ use cursive::traits::Nameable;
 use cursive::traits::Scrollable;
 use cursive::Cursive;
 
+use cursive::views::Checkbox;
 use cursive::views::Dialog;
 use cursive::views::EditView;
 use cursive::views::LinearLayout;
@@ -21,24 +22,34 @@ use std::fs;
 use std::path::Path;
 use std::path::PathBuf;
 
-fn search_in_file<P: AsRef<Path>>(pth: P, pattern: &str) -> Result<bool> {
-    let contents = fs::read_to_string(&pth)?
-        // Для того, чтобы поиск был регистронезависимым, нам нужно привести
-        // строку запроса и строку, в которой указанный запрос ищем, к одному
-        // регистру символов.
-        .to_lowercase();
-    Ok(contents.contains(&pattern.to_lowercase()))
+fn search_in_file<P: AsRef<Path>>(pth: P, pattern: &str, case_sens: bool) -> Result<bool> {
+    let mut contents = fs::read_to_string(&pth)?;
+
+    // Для того, чтобы поиск был регистронезависимым, нам нужно привести
+    // строку запроса и строку, в которой указанный запрос ищем, к одному
+    // регистру символов.
+    if !case_sens {
+        contents = contents.to_lowercase();
+    }
+
+    let pattern = if !case_sens {
+        &pattern.to_lowercase()
+    } else {
+        pattern
+    };
+
+    Ok(contents.contains(&pattern))
 }
 
 /// Последовательно читает указанные в `documents.toml` файлы и ищет в них
 /// подстроку `pattern`. Поиск регистронезависимый.
-fn search(doc: &Documentation, pattern: &str) -> Vec<PathBuf> {
+fn search(doc: &Documentation, pattern: &str, case_sens: bool) -> Vec<PathBuf> {
     let mut pathes = Vec::new();
     for d in &doc.docs {
         let path = Path::new(RESOURCES_DIR).join(&d.0);
         for page in d.1 {
             let pth = path.join(&page.id);
-            match search_in_file(&pth, pattern) {
+            match search_in_file(&pth, pattern, case_sens) {
                 Ok(result) => {
                     if result {
                         pathes.push(pth);
@@ -64,7 +75,12 @@ fn search_fn(scr: &mut Cursive, pattern: &str) {
         scr.add_layer(win);
     } else {
         let doc = Documentation::read(DOCUMENTATION_INFO_FILE).unwrap_or_default();
-        let pathes = search(&doc, pattern);
+        let case_sensitive = scr
+            .call_on_name("case_sensitive_search", |check: &mut Checkbox| {
+                check.is_checked()
+            })
+            .unwrap_or(false);
+        let pathes = search(&doc, pattern, case_sensitive);
 
         if !pathes.is_empty() {
             search_results(scr, pattern, &pathes)
@@ -116,8 +132,14 @@ pub fn search_window(scr: &mut Cursive) {
         "Введите поисковой запрос в поле ниже\n\
                   и нажмите клавишу <Enter>:",
     );
+    let check = LinearLayout::horizontal()
+        .child(Checkbox::new().with_name("case_sensitive_search"))
+        .child(TextView::new("Регистрозависимый поиск"));
 
-    let layout = LinearLayout::vertical().child(text).child(input);
+    let layout = LinearLayout::vertical()
+        .child(text)
+        .child(input)
+        .child(check);
 
     let win = Dialog::around(layout)
         .title("Поиск по документации")
