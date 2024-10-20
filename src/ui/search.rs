@@ -42,7 +42,7 @@ fn search_in_file<P: AsRef<Path>>(pth: P, pattern: &str, case_sens: bool) -> Res
 }
 
 /// Последовательно читает указанные в `documents.toml` файлы и ищет в них
-/// подстроку `pattern`. Поиск регистронезависимый.
+/// подстроку `pattern`. Поиск регистро(не)зависимый.
 fn search(doc: &Documentation, pattern: &str, case_sens: bool) -> Vec<PathBuf> {
     let mut pathes = Vec::new();
     for d in &doc.docs {
