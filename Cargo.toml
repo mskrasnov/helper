@@ -1,5 +1,5 @@
 [package]
-name = "helper"
+name = "helper-tui"
 version = "0.1.0"
 edition = "2021"
 description = "Простая программа для получения интерактивной справки по использованию команд Linux"
@@ -8,7 +8,7 @@ license = "GPL-3.0-or-later"
 homepage = "https://github.com/mskrasnov/helper"
 repository = "https://github.com/mskrasnov/helper"
 readme = "README.md"
-keywords = ["cursive", "linux", "unix", "man", "help"]
+keywords = ["cursive", "linux", "unix", "man", "help", "info", "helper"]
 categories = ["command-line-utilities"]
 
 [profile.release]
