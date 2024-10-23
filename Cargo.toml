@@ -1,6 +1,6 @@
 [package]
 name = "helper-tui"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 description = "Простая программа для получения интерактивной справки по использованию команд Linux"
 authors = ["Michail Krasnov <michail383krasnov@mail.ru>"]
