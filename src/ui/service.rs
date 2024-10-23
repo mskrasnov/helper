@@ -16,10 +16,7 @@ pub fn about_window(scr: &mut Cursive) {
          Linux-систем.",
         env!("CARGO_PKG_VERSION")
     ));
-    let about_author_text = TextView::new(
-        "(C) 2024 Михаил Краснов <michail383krasnov@mail.ru>\nПрограмма \
-                  написана мною на 1 курсе «Прикладная информатика» в ДФ ННГУ.",
-    );
+    let about_author_text = TextView::new("(C) 2024 Михаил Краснов <michail383krasnov@mail.ru>");
     let links = TextView::new(
         "Репозиторий программы находится по адресу:\nhttps://github.com/mskrasnov/helper",
     );
@@ -41,9 +38,11 @@ pub fn about_window(scr: &mut Cursive) {
                 .title_position(HAlign::Left),
         );
 
-    let win = Dialog::around(data).title("О программе").button("OK", |s| {
-        s.pop_layer();
-    });
+    let win = Dialog::around(data)
+        .title("О программе Helper")
+        .button("OK", |s| {
+            s.pop_layer();
+        });
     scr.add_layer(win);
 }
 
