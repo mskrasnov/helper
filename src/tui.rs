@@ -5,7 +5,7 @@ pub mod menu;
 pub mod search;
 pub mod service;
 
-pub fn ui() {
+pub fn tui() {
     let mut scr = cursive::default();
 
     let doc =

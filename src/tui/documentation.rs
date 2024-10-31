@@ -11,7 +11,7 @@ use cursive::views::TextView;
 use crate::config::Config;
 use crate::consts::CONFIG_FILE;
 use crate::consts::RESOURCES_DIR;
-use crate::ui::service::error_window;
+use crate::tui::service::error_window;
 
 use std::fs;
 use std::path::Path;

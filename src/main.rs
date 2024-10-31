@@ -2,10 +2,10 @@ pub mod consts;
 pub mod config;
 pub mod documentation;
 // pub mod markdown; // NOTE: это экспериментальный парсер Markdown. Он будет использован в будущем.
-pub mod ui;
+pub mod tui;
 
-use ui::ui;
+use tui::tui;
 
 fn main() {
-    ui();
+    tui();
 }

@@ -15,7 +15,7 @@ use cursive::views::TextView;
 use crate::consts::DOCUMENTATION_INFO_FILE;
 use crate::consts::RESOURCES_DIR;
 use crate::documentation::Documentation;
-use crate::ui::documentation::doc_window;
+use crate::tui::documentation::doc_window;
 
 use anyhow::Result;
 use std::fs;

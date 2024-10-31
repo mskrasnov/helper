@@ -14,12 +14,12 @@ use cursive::menu;
 
 use crate::consts::DOCUMENTATION_INFO_FILE;
 use crate::documentation::Documentation;
-use crate::ui::documentation::doc_window;
-use crate::ui::search::search_window;
-use crate::ui::service::about_window;
-use crate::ui::service::is_exit_window;
-use crate::ui::service::projects_window;
-use crate::ui::service::unimplemented_window;
+use crate::tui::documentation::doc_window;
+use crate::tui::search::search_window;
+use crate::tui::service::about_window;
+use crate::tui::service::is_exit_window;
+use crate::tui::service::projects_window;
+use crate::tui::service::unimplemented_window;
 
 use super::service::error_window;
 
