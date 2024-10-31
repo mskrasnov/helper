@@ -11,6 +11,10 @@ id = "package_managers"
 name = "Управл. программным обеспечением"
 
 [[categories]]
+id = "prog"
+name = "Программирование и разработка"
+
+[[categories]]
 id = "quick_fixes"
 name = "Быстрое решение проблем"
 
@@ -53,3 +57,11 @@ name = "dpkg (Debian, Ubuntu, Mint)"
 [[docs.package_managers]]
 id = "pacman"
 name = "Pacman (Arch, Manjaro)"
+
+[[docs.prog]]
+id = "bash1"
+name = "Программирование на Bash. Часть 1"
+
+[[docs.prog]]
+id = "bash2"
+name = "Программирование на Bash. Часть 2"
